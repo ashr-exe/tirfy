@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIRFY</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>TIRFY</h1>
+            <p>The Internet Rewritten For You</p>
+        </div>
+
+        <!-- Setup Screen (shown on first use) -->
+        <div id="setupScreen" class="setup-screen hidden">
+            <h2>Welcome to TIRFY!</h2>
+            <p>Choose your default writing style:</p>
+            <select id="defaultStyleSelect" class="style-select">
+                <option value="shakespeare">Shakespeare</option>
+                <option value="trump">Donald Trump</option>
+                <option value="obama">Barack Obama</option>
+                <option value="gordon">Gordon Ramsay</option>
+                <option value="eli5">ELI5 (Explain Like I'm 5)</option>
+            </select>
+            <button id="completeSetup" class="btn btn-primary">Let's Go!</button>
+        </div>
+
+        <!-- Main Interface -->
+        <div id="mainInterface" class="main-interface">
+            <!-- API Key Setup -->
+            <div id="apiSetup" class="api-setup hidden">
+                <h3>⚙️ Setup Required</h3>
+                <p>Enter your Gemini API key:</p>
+                <input type="password" id="apiKeyInput" placeholder="AIza...">
+                <button id="saveApiKey" class="btn btn-primary">Save</button>
+                <p class="help-text">Get your free API key at <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a></p>
+            </div>
+
+            <!-- Main Controls -->
+            <div id="mainControls" class="main-controls">
+                <!-- Current Status -->
+                <div class="status">
+                    <span id="statusText">Ready to rewrite</span>
+                    <div class="toggle-container">
+                        <label class="toggle">
+                            <input type="checkbox" id="enableToggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Style Selection -->
+                <div class="style-section">
+                    <h3>Writing Style</h3>
+                    
+                    <!-- Quick Styles -->
+                    <div class="quick-styles">
+                        <button class="style-btn active" data-style="shakespeare">📜 Shakespeare</button>
+                        <button class="style-btn" data-style="trump">🇺🇸 Trump</button>
+                        <button class="style-btn" data-style="obama">🎤 Obama</button>
+                        <button class="style-btn" data-style="churchill">🎩 Churchill</button>
+                    </div>
+
+                    <!-- All Styles Dropdown -->
+                    <div class="dropdown-container">
+                        <select id="styleSelect" class="style-select">
+                            <optgroup label="Writers">
+                                <option value="shakespeare">Shakespeare</option>
+                                <option value="seuss">Dr. Seuss</option>
+                                <option value="hemingway">Ernest Hemingway</option>
+                            </optgroup>
+                            <optgroup label="Politicians & Leaders">
+                                <option value="trump">Donald Trump</option>
+                                <option value="obama">Barack Obama</option>
+                                <option value="churchill">Winston Churchill</option>
+                            </optgroup>
+                            <optgroup label="Personalities">
+                                <option value="gordon">Gordon Ramsay</option>
+                                <option value="yoda">Yoda</option>
+                                <option value="snoop">Snoop Dogg</option>
+                                <option value="attenborough">David Attenborough</option>
+                                <option value="sherlock">Sherlock Holmes</option>
+                                <option value="eminem">Eminem</option>
+                                <option value="robbins">Tony Robbins</option>
+                            </optgroup>
+                            <optgroup label="Functional Styles">
+                                <option value="eli5">ELI5 (Explain Like I'm 5)</option>
+                                <option value="academic">Academic Paper</option>
+                                <option value="crush">Your Crush's Texts</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- Custom Style -->
+                    <div class="custom-style">
+                        <button id="customStyleBtn" class="btn btn-secondary">✨ Custom Style</button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="actions">
+                    <button id="rewriteBtn" class="btn btn-primary">🔄 Rewrite Page</button>
+                    <button id="revertBtn" class="btn btn-secondary">↩️ Show Original</button>
+                </div>
+
+                <!-- Progress -->
+                <div id="progress" class="progress hidden">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <span id="progressText">Processing...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Style Modal -->
+        <div id="customModal" class="modal hidden">
+            <div class="modal-content">
+                <h3>Custom Writing Style</h3>
+                <p>Describe the writing style you want:</p>
+                <textarea id="customStyleInput" placeholder="e.g. Write like a pirate captain, or like a teenager texting their friends, or like a formal business email..."></textarea>
+                <div class="modal-actions">
+                    <button id="applyCustom" class="btn btn-primary">Apply Style</button>
+                    <button id="cancelCustom" class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
